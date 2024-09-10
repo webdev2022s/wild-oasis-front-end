@@ -53,7 +53,7 @@ export default function DateSelector({ setting, bookDates, cabin }) {
         onSelect={(range) => setRange(range)}
         selected={displayRange}
         disabled={(curDate) =>
-          isPast(curDate) ||
+          isPast(!curDate) ||
           bookDates.some((dates) => isSameDay(dates, curDate))
         }
       />
