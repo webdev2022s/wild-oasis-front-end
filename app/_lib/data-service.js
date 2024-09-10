@@ -42,6 +42,17 @@ export const getCabinById = async (id) => {
   return data;
 };
 
+export const getReservationBookingData = async (id) => {
+  let query = await supabase.from("bookings");
+
+  if (id) query = query.select("*").eq("id", id).single();
+  const { data, error } = await query;
+
+  if (error) throw new Error("Cant load reservation data");
+
+  return data;
+};
+
 export const getBookDateCabinById = async (id) => {
   let today = new Date();
   today.setUTCHours(0, 0, 0, 0);
