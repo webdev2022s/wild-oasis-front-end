@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .loader {
+    width: 8px;
+    height: 40px;
+    border-radius: 4px;
+    display: block;
+    margin: 20px auto;
+    position: relative;
+    background: currentColor;
+    color: #ff9705d9;
+    box-sizing: border-box;
+    animation: animloader 0.3s 0.3s linear infinite alternate;
+  }
+
+  .loader::after,
+  .loader::before {
+    content: "";
+    width: 8px;
+    height: 40px;
+    border-radius: 4px;
+    background: currentColor;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    box-sizing: border-box;
+    animation: animloader 0.3s 0.45s linear infinite alternate;
+  }
+  .loader::before {
+    left: -20px;
+    animation-delay: 0s;
+  }
+
+  @keyframes animloader {
+    0% {
+      height: 48px;
+    }
+    100% {
+      height: 4px;
+    }
+  }
+
+  .loadermini {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite;
+  }
+  .loadermini::before,
+  .loadermini::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    animation: prixClipFix 2s linear infinite;
+  }
+  .loadermini::after {
+    border-color: #ff9705d9;
+    animation: prixClipFix 2s linear infinite,
+      rotate 0.5s linear infinite reverse;
+    inset: 6px;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes prixClipFix {
+    0% {
+      clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+    }
+    25% {
+      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+    }
+    50% {
+      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+    }
+    75% {
+      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+    }
+    100% {
+      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+    }
+  }
+}
+
+@keyframes animloader {
+  0% {
+    height: 48px;
+  }
+  100% {
+    height: 4px;
+  }
+}
+
+.rdp {
+  --rdp-cell-size: 32px !important;
+  --rdp-accent-color: theme("colors.accent.500") !important;
+  --rdp-background-color: theme("colors.accent.600") !important;
+  margin: 0 !important;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.scroll {
+  scrollbar-color: #ff9705d9 #141c24;
+}
+.scroll::-webkit-scrollbar {
+  width: 0;
+}
+
+/** Date Picker*/
+/* .rdp-root {
+  color: #e1e8ef; 
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  padding: 2rem;
+}
+.rdp-nav {
+  display: none;
+}
+
+.rdp-caption_label {
+  display: none;
+}
+
+.rdp-dropdown {
+  background-color: #141c24;
+}
+
+.rdp-months {
+  display: flex;
+  gap: 2rem;
+}
+
+.rdp-weekday:not(:last-child) {
+  padding: 0.6rem;
+}
+
+.rdp-week {
+  text-align: center;
+}
+
+.rdp-dropdowns {
+  text-align: center;
+} */
